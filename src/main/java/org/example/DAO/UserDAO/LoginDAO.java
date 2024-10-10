@@ -33,6 +33,6 @@ public class LoginDAO {
     }
     public boolean forgetPassword(User user) {
         String sql = "update user set password = ? where username = ?";
-
+        return false;
     }
 }
