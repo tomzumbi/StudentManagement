@@ -4,7 +4,7 @@ package org.example.model;
 import java.sql.Date;
 
 public class User {
-    private int idUser;
+    private String idUser;
     private String username;
     private String password;
     private String name;
@@ -12,11 +12,12 @@ public class User {
     private String phone;
     private Date birthday;
     private String address;
+    private String gender;
     // 1: đang hoc 2: nghỉ học 3: thôi học
     private int status;
     private boolean role;
 
-    public User(int idUser, String username, String password, String name, String email, String phone, Date birthday, String address, int status, boolean role) {
+    public User(String idUser, String username, String password, String name, String email, String phone, Date birthday, String address, int status, boolean role,String gender) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
@@ -27,16 +28,28 @@ public class User {
         this.address = address;
         this.status = status;
         this.role = role;
+        this.gender = gender;
+    }
+
+    public User(String idUser, String username, String password,  String email, String phone, String gender,int status, boolean role) {
+        this.idUser = idUser;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.status = status;
+        this.role = role;
     }
 
     public User() {
     }
 
-    public int getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
@@ -106,6 +119,14 @@ public class User {
 
     public boolean isRole() {
         return role;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public void setRole(boolean role) {

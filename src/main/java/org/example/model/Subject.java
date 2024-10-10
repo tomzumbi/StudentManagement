@@ -1,12 +1,12 @@
 package org.example.model;
 
 public class Subject {
-    private int idSubject;
+    private String idSubject;
     private String subjectName;
     //tín chỉ
     private int credit;
 
-    public Subject(int idSubject, String subjectName, int credit) {
+    public Subject(String idSubject, String subjectName, int credit) {
         this.idSubject = idSubject;
         this.subjectName = subjectName;
         this.credit = credit;
@@ -15,11 +15,11 @@ public class Subject {
     public Subject() {
     }
 
-    public int getIdSubject() {
+    public String getIdSubject() {
         return idSubject;
     }
 
-    public void setIdSubject(int idSubject) {
+    public void setIdSubject(String idSubject) {
         this.idSubject = idSubject;
     }
 

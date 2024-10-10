@@ -11,10 +11,9 @@ public class ConnectionMySql {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-            System.out.println("Connected to database");
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("error");
+            System.out.println("Không kết nối được database!");
         }
         return connection;
     }
