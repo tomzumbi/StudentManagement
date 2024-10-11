@@ -3,26 +3,28 @@ package org.example.model;
 
 import java.sql.Date;
 
-public class User {
-    private int idUser;
+public class  User {
+    private String idUser;
     private String username;
     private String password;
     private String name;
     private String email;
     private String phone;
+    private String gender;
     private Date birthday;
     private String address;
     // 1: đang hoc 2: nghỉ học 3: thôi học
     private int status;
     private boolean role;
 
-    public User(int idUser, String username, String password, String name, String email, String phone, Date birthday, String address, int status, boolean role) {
+    public User(String idUser, String username, String password, String name, String email, String phone, String gender, Date birthday, String address, int status, boolean role) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.gender = gender;
         this.birthday = birthday;
         this.address = address;
         this.status = status;
@@ -31,12 +33,16 @@ public class User {
 
     public User() {
     }
+    public User(String username,String password) {
+        this.username = username;
+        this.password = password;
+    }
 
-    public int getIdUser() {
+    public String getIdUser() {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(String idUser) {
         this.idUser = idUser;
     }
 
