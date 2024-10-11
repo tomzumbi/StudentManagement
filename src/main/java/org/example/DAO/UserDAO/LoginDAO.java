@@ -33,6 +33,14 @@ public class LoginDAO {
     }
     public boolean forgetPassword(User user) {
         String sql = "update user set password = ? where username = ?";
-        return false;
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1,user.getPassword());
+            ps.setString(2,user.getUsername());
+            return ps.execute();
+        } catch (SQLException e) {
+            return false;
+        }
     }
+
 }

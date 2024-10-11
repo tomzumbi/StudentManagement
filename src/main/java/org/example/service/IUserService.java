@@ -10,4 +10,5 @@ public interface IUserService {
     boolean checkPhoneNumber(String phone);
     boolean checkUsername(String username);
     User findByUserName(String userName);
+    boolean forgotPassword(User user);
 }

@@ -34,4 +34,9 @@ public class UserService implements IUserService {
     public User findByUserName(String userName) {
         return loginDao.findByUserName(userName);
     }
+
+    @Override
+    public boolean forgotPassword(User user) {
+        return loginDao.forgetPassword(user);
+    }
 }

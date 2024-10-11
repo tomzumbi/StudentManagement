@@ -105,4 +105,34 @@ public class UserController {
     }
 
 
+    public boolean forgotPassword(){
+        User user;
+        System.out.print("Nhập tên tài khoản của bạn: ");
+        String username = scanner.nextLine();
+        user = userService.findByUserName(username);
+        if (user == null) {
+            System.out.println("Tài khoản không tồn tại vui lòng kiểm tra lại!");
+        } else {
+            System.out.print("Nhập email của bạn: ");
+            String email = scanner.nextLine();
+            if (email.equals(user.getEmail())) {
+                System.out.print("Nhập mật khẩu mới: ");
+                String password = scanner.nextLine();
+                while (!Validate.validatePassword(password)) {
+                    System.out.print("Mật khẩu phải bao gồm chữ hoa, chữ thường, số và kí tự đặc biệt");
+                    password = scanner.nextLine();
+                }
+                user.setPassword(password);
+                userService.forgotPassword(user);
+                System.out.println("Ban đã thay đổi mật khẩu thành công!");
+                return true;
+            } else {
+                System.out.println("Email bạn nhập không chính xác vui lòng thử lại");
+            }
+        }
+        return false;
+    }
+
+
+
 }

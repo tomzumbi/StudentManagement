@@ -24,6 +24,7 @@ public class UserView {
                     userController.register();
                     break;
                 case "3":
+                    userController.forgotPassword();
                     break;
                 default:
                     break;
