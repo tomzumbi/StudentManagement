@@ -1,15 +1,13 @@
 package org.example.view;
 
-import org.example.controller.adminController.ControllerSubject;
-import org.example.controller.adminController.ControllerUser;
+import org.example.controller.AdminController;
 import org.example.model.User;
 
 import java.util.Scanner;
 
 public class AdminView {
     Scanner sc = new Scanner(System.in);
-    ControllerSubject controllerSubject = new ControllerSubject();
-    ControllerUser controllerUser = new ControllerUser();
+    AdminController adminController = new AdminController();
     public void menu(){
         System.out.println("-----Menu----");
         System.out.println("1. Xóa sinh viên");
@@ -24,7 +22,7 @@ public class AdminView {
         switch(choice) {
             case "1":
                 //Xóa sinh viên
-                controllerUser.deleteStudent();
+                adminController.deleteStudent();
                 break;
             case "2":
                 String choice1 = "";
@@ -32,7 +30,7 @@ public class AdminView {
                 sc.nextLine();
                 break;
             case "3":
-                controllerUser.findStudent();
+                adminController.findStudent();
                 break;
             case "4":
                 String choice2 = "";
@@ -42,7 +40,7 @@ public class AdminView {
             case "5":
                 break;
             case "6":
-                controllerUser.DisplayStudent();
+                adminController.DisplayStudent();
                 break;
             case "0":
                 System.out.println("Thoát");
@@ -67,19 +65,19 @@ public class AdminView {
             choice = sc.nextLine();
             switch (choice){
                 case "1":
-                    controllerUser.updateStudentDateOfBirth();
+                    adminController.updateStudentDateOfBirth();
                     break;
                 case "2":
-                    controllerUser.updateStudentDateOfBirth();
+                    adminController.updateStudentDateOfBirth();
                     break;
                 case "3":
-                    controllerUser.updateStatusStudent();
+                    adminController.updateStatusStudent();
                     break;
                 case "4":
-                    controllerUser.updateEmail();
+                    adminController.updateEmail();
                     break;
                 case "5":
-                    controllerUser.updatePhoneNumber();
+                    adminController.updatePhoneNumber();
                 case "0":
                     System.out.println("Thoát thành công");
                     break;
@@ -101,10 +99,10 @@ public class AdminView {
             choice = sc.nextLine();
             switch (choice){
                 case "1":
-                    controllerSubject.updateNameSubject();
+                    adminController.updateNameSubject();
                     break;
                 case "2":
-                    controllerSubject.updateCreditSubject();
+                    adminController.updateCreditSubject();
                     break;
                 case "0":
                     System.out.println("Thoát thành công");
