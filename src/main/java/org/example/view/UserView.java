@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class UserView {
     Scanner scanner = new Scanner(System.in);
     UserController userController = new UserController();
+    StudentView studentView = new StudentView();
     public void menuUserView() {
         while (true) {
             System.out.println("1. Đăng nhập");
@@ -18,7 +19,17 @@ public class UserView {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    userController.login();
+                    User user = userController.login();
+                    if (user != null) {
+                        if (user.isRole()) {
+                            System.out.println("");
+                            studentView.menuStudentView(user);
+                        } else {
+                            break;
+                        }
+                    } else {
+                        break;
+                    }
                     break;
                 case "2":
                     userController.register();
@@ -36,11 +47,5 @@ public class UserView {
         }
     }
 
-
-
-
-    public void menuStudentView(User user) {
-
-    }
 
 }

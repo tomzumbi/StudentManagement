@@ -22,17 +22,17 @@ public class UserController {
                 System.out.print("Nhập lại mật: ");
                 String confirmPassword = scanner.nextLine();
                 while (!confirmPassword.equals(password)) {
-                    System.out.println("Mật khẩu nhập lại không khớp vui lòng nhập lại: ");
+                    System.out.print("Mật khẩu nhập lại không khớp vui lòng nhập lại: ");
                     confirmPassword = scanner.nextLine();
                 }
                 System.out.print("Nhập số điện thoại: ");
                 String phone = scanner.nextLine();
                 while (!Validate.validatePhoneNumber(phone)) {
-                    System.out.println("Số điện thoại không đúng định dạng vui lòng thử lại");
+                    System.out.print("Số điện thoại không đúng định dạng vui lòng thử lại: ");
                     phone = scanner.nextLine();
                 }
                 while (userService.checkPhoneNumber(phone)) {
-                    System.out.println("Số điện thoại đã được sử dụng vui lòng nhập số khác");
+                    System.out.print("Số điện thoại đã được sử dụng vui lòng nhập số khác: ");
                     phone = scanner.nextLine();
                 }
 
@@ -46,7 +46,10 @@ public class UserController {
                     System.out.println("Email đã được sử dụng vui lòng nhập email khác: ");
                     email = scanner.nextLine();
                 }
-
+                System.out.println("Bạn là: ");
+                System.out.println("1. Nam");
+                System.out.println("2. Nữ");
+                System.out.print("Mời bạn nhập lựa chọn: ");
                 String choice = scanner.nextLine();
                 while (!choice.equals("1") && !choice.equals("2")) {
                     System.out.print("Lựa chọn không hợp lệ vui lòng chọn lại: ");
@@ -81,13 +84,14 @@ public class UserController {
 
     public User login(){
         User user = new User();
-        System.out.println("Tên đăng nhập: ");
+        System.out.print("Tên đăng nhập: ");
         String username = scanner.nextLine();
         user = userService.findByUserName(username);
         if (user == null) {
             System.out.println("Tài khoản không tồn tại! Vui lòng đăng kí trước khi sử dụng");
             return null;
         } else {
+            System.out.print("Mật khẩu: ");
             String password = scanner.nextLine();
             while (!password.equals(user.getPassword())) {
                 System.out.println("Mật khẩu không chính xác vui lòng nhập lại: ");
@@ -95,12 +99,12 @@ public class UserController {
             }
 
             if (user.isRole()){
-                System.out.println("xin chào sinh viên: " + user.getUsername());
+                return user;
             } else {
-                System.out.println("Chào quản lí: " + user.getUsername());
+                return user;
             }
 
-            return user;
+
         }
     }
 
