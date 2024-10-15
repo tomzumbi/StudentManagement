@@ -1,8 +1,8 @@
-package org.example.exception;
+package org.example.config;
 
 import java.util.regex.Pattern;
 
-public class AdminException {
+public class AdminConfig {
     //Ngày tháng
     public boolean isValiDate(int day, int month, int year) {
         if (year < 1990 || year > 2024) {
@@ -41,6 +41,21 @@ public class AdminException {
             }
         }
         return false;
+    }
+    public boolean containsInvalidCharacters(String str) {
+        return !str.matches("[a-zA-ZÀ-ỹà-ỹ\\s]+");
+    }
+    //Phương thức đánh giá điểm của học sinh
+    public String evaluateScore(Integer score) {
+        if (score >= 8) {
+            return "Giỏi";
+        } else if (score >= 6.5) {
+            return "Khá";
+        } else if (score >= 5) {
+            return "Trung bình";
+        } else {
+            return "Yếu";
+        }
     }
 }
 
