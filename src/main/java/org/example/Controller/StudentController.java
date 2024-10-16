@@ -10,19 +10,54 @@ import java.util.Scanner;
 public class StudentController {
     StudentService studentService = new StudentService();
     Scanner scanner = new Scanner(System.in);
-
+    Validate validate = new Validate();
     public boolean updateInformation(User user) {
-        System.out.print("Nhập tên của bạn: ");
+        System.out.print("Nhập họ và tên của bạn: ");
         String name = scanner.nextLine();
-        System.out.print("Nhập ngày sinh của bạn: ");
-        String day = scanner.nextLine();
-        System.out.print("Nhập tháng sinh của bạn: ");
-        String month = scanner.nextLine();
-        System.out.print("Nhập năm sinh của bạn: ");
-        String year = scanner.nextLine();
+//        System.out.print("Nhập ngày sinh của bạn: ");
+//        String day = scanner.nextLine();
+//        System.out.print("Nhập tháng sinh của bạn: ");
+//        String month = scanner.nextLine();
+//        System.out.print("Nhập năm sinh của bạn: ");
+//        String year = scanner.nextLine();
+
+
+        String day;
+        while (true) {
+            System.out.print("Nhập ngày sinh của bạn: ");
+            day = scanner.nextLine();
+            if (validate.isValidDay(day)) {
+                break; // Thoát vòng lặp nếu ngày hợp lệ
+            } else {
+                System.out.println("Ngày không hợp lệ. Vui lòng nhập lại.");
+            }
+        }
+
+        String month;
+        while (true) {
+            System.out.print("Nhập tháng sinh của bạn: ");
+            month = scanner.nextLine();
+            if (validate.isValidMonth(month)) {
+                break; // Thoát vòng lặp nếu tháng hợp lệ
+            } else {
+                System.out.println("Tháng không hợp lệ. Vui lòng nhập lại.");
+            }
+        }
+
+        String year;
+        while (true) {
+            System.out.print("Nhập năm sinh của bạn: ");
+            year = scanner.nextLine();
+            if (validate.isValidYear(year)) {
+                break; // Thoát vòng lặp nếu năm hợp lệ
+            } else {
+                System.out.println("Năm không hợp lệ. Vui lòng nhập lại.");
+            }
+        }
+
         String date = year + "-" + month + "-" + day;
         Date birthday = Date.valueOf(date);
-        System.out.println("Nhập địa chỉ của bạn: ");
+        System.out.print("Nhập địa chỉ của bạn: ");
         String address = scanner.nextLine();
         user.setName(name);
         user.setBirthday(birthday);
@@ -36,7 +71,6 @@ public class StudentController {
                 "Mã Sinh Viên", "Tên", "Ngày Sinh", "Giới Tính", "Email", "Số Điện Thoại");
         System.out.println("----------------------------------------------------------------------------------------------------------");
         System.out.printf("%-15s %-20s %-15s %-10s %-30s %-15s %n", user.getIdUser(), user.getName(), user.getBirthday(), user.getGender(), user.getEmail(), user.getPhone());
-        System.out.println("----------------------------------------------------------------------------------------------------------");
     }
 
     public boolean editEmail(User user) {

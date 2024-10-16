@@ -42,4 +42,11 @@ public class SubjectController {
         }
     }
 
+    public Subject findByName(String subjectName) {
+        if (subjectService.findByName(subjectName) != null) {
+            return subjectService.findByName(subjectName);
+        } else {
+            return null;
+        }
+    }
 }

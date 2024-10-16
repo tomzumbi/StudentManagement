@@ -38,6 +38,7 @@ public class UserView {
                     userController.forgotPassword();
                     break;
                 default:
+                    System.out.println("Lựa chọn của bạn không hợp lệ!");
                     break;
 
 

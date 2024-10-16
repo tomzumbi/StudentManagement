@@ -15,6 +15,18 @@ public class Enrollment {
         this.avgScore = avgScore;
     }
 
+    public Enrollment(String idUser, String idSubject, float avgScore) {
+        this.idUser = idUser;
+        this.idSubject = idSubject;
+        this.avgScore = avgScore;
+    }
+
+    public Enrollment(String idUser, String idSubject, Date enrollmentDate) {
+        this.idUser = idUser;
+        this.idSubject = idSubject;
+        this.enrollmentDate = enrollmentDate;
+    }
+
     public Enrollment() {
     }
 

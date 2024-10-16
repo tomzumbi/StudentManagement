@@ -3,6 +3,7 @@ package org.example.view;
 import org.example.Controller.EnrollmentController;
 import org.example.Controller.StudentController;
 import org.example.Controller.SubjectController;
+import org.example.model.Subject;
 import org.example.model.User;
 
 import java.util.Scanner;
@@ -12,6 +13,7 @@ public class StudentView {
     StudentController controller = new StudentController();
     SubjectController subjectController = new SubjectController();
     EnrollmentController enrollmentController = new EnrollmentController();
+
     public void menuStudentView(User user) {
         System.out.println("Xin chào sinh viên: " + user.getName());
         while (true) {
@@ -46,18 +48,47 @@ public class StudentView {
                         enrollmentController.getEnrollment(user);
 
                     } else {
-                        System.out.println("Bạn chưa đăng kí học phần nào vui lòng đăng kí trước khi kiểm tra");
+                        System.out.println("Bạn chưa đăng kí học phần nào vui lòng đăng kí trước khi kiểm tra!");
                     }
 
                     break;
                 case "6":
+                    System.out.print("Nhập tên học phần bạn muốn đăng kí: ");
+                    String subjectName = sc.nextLine();
+                    Subject subject = subjectController.findByName(subjectName);
+                    if (subject != null) {
+                        if (enrollmentController.checkRegisEnroll(user, subject) > 0) {
+                            System.out.println("Bạn đã đăng kí học phần này vui lòng kiểm tra các học phần khác!");
+                        } else {
+                            enrollmentController.addEnrollment(user, subject);
+                            System.out.println("Bạn đã đăng kí học phần " + subject.getSubjectName() + " thành công!");
+                        }
+                    } else {
+                        System.out.println("Học phần không tồn tại vui lòng kiểm tra lại!");
+                    }
                     break;
                 case "7":
+                    System.out.print("Nhập tên học phần bạn muốn hủy đăng kí: ");
+                    String subjectName1 = sc.nextLine();
+                    Subject subject1 = subjectController.findByName(subjectName1);
+                    if (subject1 != null) {
+                        if (enrollmentController.checkRegisEnroll(user, subject1) == 0) {
+                            System.out.println("Bạn chưa đăng kí học phần này!");
+                        }else {
+                            enrollmentController.removeEnrollment(user, subject1);
+                            System.out.println("Hủy đăng kí học phần " + subject1.getSubjectName() + " thành công! Mã học phần: " + subject1.getIdSubject());
+                        }
+                    } else {
+                        System.out.println("Không tồn tại học phần có tên: " + subjectName1 + " . Vui lòng kiểm tra lại!");
+                    }
+
                     break;
                 case "8":
+                    enrollmentController.evaluateStudent(user);
                     break;
                 case "9":
-
+                    UserView userView = new UserView();
+                    userView.menuUserView();
                     break;
                 default:
                     System.out.println("Lựa chọn của bạn không hợp lệ!");
@@ -87,6 +118,7 @@ public class StudentView {
                     menuStudentView(user);
                     break;
                 default:
+                    System.out.println("Lựa chọn của bạn không hợp lệ");
                     break;
             }
         }

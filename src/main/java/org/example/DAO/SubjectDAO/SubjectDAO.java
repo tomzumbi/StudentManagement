@@ -28,4 +28,20 @@ public class SubjectDAO {
         return subjects;
     }
 
+    public Subject findByName(String subjectName) {
+        String sql = "SELECT * FROM subject WHERE subjectname COLLATE utf8mb4_general_ci = ?" ;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, subjectName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            String idSubject = resultSet.getString("idSubject");
+            String name = resultSet.getString("subjectname");
+            String credit = resultSet.getString("credit");
+            return new Subject(idSubject, name, Integer.parseInt(credit));
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
 }

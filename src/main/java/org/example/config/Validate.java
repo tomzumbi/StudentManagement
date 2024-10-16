@@ -24,4 +24,35 @@ public class Validate {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
+
+    public  boolean isValidDay(String day) {
+        try {
+            int d = Integer.parseInt(day);
+            return d >= 1 && d <= 31;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public boolean isValidMonth(String month) {
+        try {
+            int m = Integer.parseInt(month);
+            return m >= 1 && m <= 12;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public boolean isValidYear(String year) {
+        try {
+            int y = Integer.parseInt(year);
+            int currentYear = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+            return y > 1000 && y <= currentYear;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+
 }

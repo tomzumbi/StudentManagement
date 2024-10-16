@@ -12,4 +12,9 @@ public class SubjectService implements ISubjectService {
     public List<Subject> selectAll() {
         return dao.selectAll();
     }
+
+    @Override
+    public Subject findByName(String subjectName) {
+        return dao.findByName(subjectName);
+    }
 }
