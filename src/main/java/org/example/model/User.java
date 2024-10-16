@@ -44,6 +44,10 @@ public class User {
 
     public User() {
     }
+    public User(String username,String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public String getIdUser() {
         return idUser;
@@ -131,5 +135,12 @@ public class User {
 
     public void setRole(boolean role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("+------------+---------------------+---------------------+---------------------+---------------------------------+-----------------+------------+---------------------+---------------------------------------------------------+--------+-------+\n" +
+                             "| %-10s | %-19s | %-19s | %-19s | %-31s | %-15s | %-10s | %-19s | %-55s | %-6s | %-5s |\n",
+                                idUser, username, password, name, email, phone, gender, birthday, address, status, role);
     }
 }
