@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class AdminView {
     Scanner sc = new Scanner(System.in);
     AdminController adminController = new AdminController();
-    public void menu(){
+    public void menu(User user) {
         System.out.println("-----Menu----");
         System.out.println("1. Xóa sinh viên");
         System.out.println("2. Sửa thông tin sinh viên.");

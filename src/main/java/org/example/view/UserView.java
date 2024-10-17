@@ -9,6 +9,7 @@ public class UserView {
     Scanner scanner = new Scanner(System.in);
     UserController userController = new UserController();
     StudentView studentView = new StudentView();
+    AdminView adminView = new AdminView();
     public void menuUserView() {
         while (true) {
             System.out.println("1. Đăng nhập");
@@ -25,7 +26,7 @@ public class UserView {
                             System.out.println("");
                             studentView.menuStudentView(user);
                         } else {
-                            break;
+                            adminView.menu(user);
                         }
                     } else {
                         break;

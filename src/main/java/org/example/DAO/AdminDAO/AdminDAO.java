@@ -120,7 +120,7 @@ public class AdminDAO {
                 Date birthday = resultSet.getDate("birthday");
                 int status = resultSet.getInt("status");
                 boolean role = resultSet.getBoolean("role");
-                User user1 = new User(ID, userName, password, name,email, phone, gender,birthday,address, status, role);
+                User user1 = new User(ID, userName, password, name,email, phone,birthday,address, status, role, gender);
                 userList.add(user1);
             }
         }catch (SQLException e){
@@ -149,7 +149,7 @@ public class AdminDAO {
             Date birthday = resultSet.getDate("birthday");
             int status = resultSet.getInt("status");
             boolean role = resultSet.getBoolean("role");
-            return new User(ID, userName, password, name,email, phone, gender,birthday,address, status, role);
+            return new User(ID, userName, password, name,email, phone,birthday,address, status, role, gender);
         }catch (SQLException e){
             e.printStackTrace();
             return null;
