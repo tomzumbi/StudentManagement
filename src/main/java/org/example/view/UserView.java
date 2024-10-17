@@ -1,6 +1,6 @@
 package org.example.view;
 
-import org.example.Controller.UserController;
+import org.example.controller.UserController;
 import org.example.model.User;
 
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package org.example.Controller;
+package org.example.controller;
 
 import org.example.config.Validate;
 import org.example.model.User;
@@ -79,6 +79,10 @@ public class StudentController {
         while (!Validate.validateEmail(email)){
             System.out.print("Email của bạn không đúng định dạng vui lòng nhập lại");
         }
+        while (studentService.checkEmail(email)) {
+            System.out.print("Email đã tồn tại vui lòng chọn email khác: ");
+            email = scanner.nextLine();
+        }
         user.setEmail(email);
         studentService.editEmail(user);
         System.out.println("Sửa email thành công! ");
@@ -90,6 +94,11 @@ public class StudentController {
         while (!Validate.validatePhoneNumber(phone)){
             System.out.print("Số điện thoại của bạn không đúng định dạng vui lòng nhập lại");
         }
+        while (studentService.checkPhoneNumber(phone)) {
+            System.out.print("Số điện thoại đã được sử dụng vui lòng nhập số khác: ");
+            phone = scanner.nextLine();
+        }
+
         user.setPhone(phone);
         studentService.editPhone(user);
         System.out.println("Sửa số điện thoại thành công! ");

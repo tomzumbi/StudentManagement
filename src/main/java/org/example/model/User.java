@@ -2,6 +2,7 @@ package org.example.model;
 
 
 import java.sql.Date;
+import java.util.List;
 
 public class User {
     private String idUser;
@@ -16,8 +17,24 @@ public class User {
     // 1: đang hoc 2: nghỉ học 3: thôi học
     private int status;
     private boolean role;
+    private List <Enrollment> enrollments;
 
-    public User(String idUser, String username, String password, String name, String email, String phone, Date birthday, String address, int status, boolean role,String gender) {
+    public User(String idUser, String username, String password, String name, String email, String phone, Date birthday, String address, String gender, int status, boolean role, List<Enrollment> enrollments) {
+        this.idUser = idUser;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.address = address;
+        this.gender = gender;
+        this.status = status;
+        this.role = role;
+        this.enrollments = enrollments;
+    }
+
+    public User(String idUser, String username, String password, String name, String email, String phone, Date birthday, String address, int status, boolean role, String gender) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
@@ -31,6 +48,19 @@ public class User {
         this.gender = gender;
     }
 
+    public User(String idUser, String username, String password, String name, String email, String phone, Date birthday, String address,String gender) {
+        this.idUser = idUser;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.address = address;
+        this.gender = gender;
+    }
+
+
     public User(String idUser, String username, String password,  String email, String phone, String gender,int status, boolean role) {
         this.idUser = idUser;
         this.username = username;
@@ -41,6 +71,8 @@ public class User {
         this.status = status;
         this.role = role;
     }
+
+
 
     public User() {
     }
@@ -137,10 +169,18 @@ public class User {
         this.role = role;
     }
 
+    public List<Enrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    public void setEnrollments(List<Enrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
+
     @Override
     public String toString() {
-        return String.format("+------------+---------------------+---------------------+---------------------+---------------------------------+-----------------+------------+---------------------+---------------------------------------------------------+--------+-------+\n" +
-                             "| %-10s | %-19s | %-19s | %-19s | %-31s | %-15s | %-10s | %-19s | %-55s | %-6s | %-5s |\n",
-                                idUser, username, password, name, email, phone, gender, birthday, address, status, role);
+        return String.format("+------------+---------------------+---------------------------------+-----------------+------------+---------------------+---------------------------------------------------------+\n" +
+                             "| %-10s | %-19s | %-31s | %-15s | %-10s | %-19s | %-55s |\n",
+                                idUser, name, email, phone, gender, birthday, address);
     }
 }

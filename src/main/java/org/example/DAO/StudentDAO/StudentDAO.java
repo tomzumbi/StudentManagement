@@ -5,6 +5,7 @@ import org.example.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class StudentDAO {
@@ -47,6 +48,36 @@ public class StudentDAO {
             throw new RuntimeException(e);
         }
     }
+    public boolean checkEmail(String email) {
+        String sql = "select count(*) from user where email = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
 
+        }
+        return false;
+    }
+
+    public boolean checkPhoneNumber(String phone) {
+        String sql = "select count(*) from user where phone = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, phone);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return false;
+    }
 
 }

@@ -22,5 +22,15 @@ public class StudentService implements IStudentService {
         return studentDAO.editPhone(user);
     }
 
+    @Override
+    public boolean checkEmail(String email) {
+        return studentDAO.checkEmail(email);
+    }
+
+    @Override
+    public boolean checkPhoneNumber(String phone) {
+        return studentDAO.checkPhoneNumber(phone);
+    }
+
 
 }

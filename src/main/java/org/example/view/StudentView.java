@@ -1,8 +1,8 @@
 package org.example.view;
 
-import org.example.Controller.EnrollmentController;
-import org.example.Controller.StudentController;
-import org.example.Controller.SubjectController;
+import org.example.controller.EnrollmentController;
+import org.example.controller.StudentController;
+import org.example.controller.SubjectController;
 import org.example.model.Subject;
 import org.example.model.User;
 

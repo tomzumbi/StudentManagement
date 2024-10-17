@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.example.DAO.AdminDAO.AdminDAO;
+import org.example.DAO.SubjectDAO.SubjectDAO;
 import org.example.model.Subject;
 import org.example.model.User;
 import org.example.service.IAdminService;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class AdminService implements IAdminService {
     AdminDAO adminDao = new AdminDAO();
+    SubjectDAO subjectDao = new SubjectDAO();
     @Override
     public void deleteStudent(String idUser) {
          adminDao.deleteStudent(idUser);
@@ -38,7 +40,7 @@ public class AdminService implements IAdminService {
 
     @Override
     public boolean updateStatus(User user) {
-        return adminDao.uppdateStatus(user);
+        return adminDao.updateStatus(user);
     }
 
     @Override
@@ -70,6 +72,36 @@ public class AdminService implements IAdminService {
     @Override
     public Map<String, List<Map<String, Object>>> getStudentsWithClassification() {
         return adminDao.getStudentsWithClassification();
+    }
+
+    @Override
+    public List<Subject> selectAll() {
+        return subjectDao.selectAll();
+    }
+
+    @Override
+    public List<User> getUserNotID() {
+        return adminDao.getUserNotID();
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return adminDao.findUserByEmail(email);
+    }
+
+    @Override
+    public boolean updateStudentID(User user) {
+        return adminDao.updateStudentID(user);
+    }
+
+    @Override
+    public boolean checkID(String idUser) {
+        return adminDao.checkID(idUser);
+    }
+
+    @Override
+    public List<User> academicRecords() {
+        return adminDao.academicRecords();
     }
 
 }

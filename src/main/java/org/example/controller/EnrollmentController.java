@@ -1,4 +1,4 @@
-package org.example.Controller;
+package org.example.controller;
 
 import org.example.model.Enrollment;
 import org.example.model.Subject;
@@ -6,12 +6,8 @@ import org.example.model.User;
 import org.example.service.impl.EnrollmentService;
 
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class EnrollmentController {
     EnrollmentService enrollmentService = new EnrollmentService();

@@ -54,5 +54,11 @@ public class Validate {
         }
     }
 
+    public static boolean isValidStudentID(String studentID) {
+        String regex = "^177\\d{7,}$";
+        Pattern pattern = Pattern.compile(regex);
+        return pattern.matcher(studentID).matches();
+    }
+
 
 }
