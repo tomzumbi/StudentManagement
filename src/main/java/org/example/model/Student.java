@@ -5,29 +5,26 @@ import java.sql.Date;
 public class Student extends User {
     private String idStudent;
     private String nameStudent;
+    private boolean genderStudent;
     private String emailStudent;
     private String phoneStudent;
     private Date dateStudent;
     private int statusStudent;
-    private boolean genderStudent;
-    private int role;
     private String idClass;
 
-
-    public Student(String username, String password, int role) {
-        super(username, password, role);
+    public Student(String idUser, String username, String password, int role) {
+        super(idUser, username, password, role);
     }
 
-    public Student(String username, String password, int role, String idStudent, String nameStudent, String emailStudent, String phoneStudent, Date dateStudent, int statusStudent, boolean genderStudent, int role1, String idClass) {
-        super(username, password, role);
+    public Student(String idUser, String username, String password, int role, String idStudent, String nameStudent, boolean genderStudent, String emailStudent, String phoneStudent, Date dateStudent, int statusStudent, String idClass) {
+        super(idUser, username, password, role);
         this.idStudent = idStudent;
         this.nameStudent = nameStudent;
+        this.genderStudent = genderStudent;
         this.emailStudent = emailStudent;
         this.phoneStudent = phoneStudent;
         this.dateStudent = dateStudent;
         this.statusStudent = statusStudent;
-        this.genderStudent = genderStudent;
-        this.role = role1;
         this.idClass = idClass;
     }
 
@@ -45,6 +42,14 @@ public class Student extends User {
 
     public void setNameStudent(String nameStudent) {
         this.nameStudent = nameStudent;
+    }
+
+    public boolean isGenderStudent() {
+        return genderStudent;
+    }
+
+    public void setGenderStudent(boolean genderStudent) {
+        this.genderStudent = genderStudent;
     }
 
     public String getEmailStudent() {
@@ -77,24 +82,6 @@ public class Student extends User {
 
     public void setStatusStudent(int statusStudent) {
         this.statusStudent = statusStudent;
-    }
-
-    public boolean isGenderStudent() {
-        return genderStudent;
-    }
-
-    public void setGenderStudent(boolean genderStudent) {
-        this.genderStudent = genderStudent;
-    }
-
-    @Override
-    public int getRole() {
-        return role;
-    }
-
-    @Override
-    public void setRole(int role) {
-        this.role = role;
     }
 
     public String getIdClass() {
