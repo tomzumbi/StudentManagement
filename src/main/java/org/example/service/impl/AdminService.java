@@ -1,6 +1,7 @@
 package org.example.service.impl;
 
 import org.example.DAO.AdminDAO.AdminDAO;
+import org.example.DAO.ExportToPDF;
 import org.example.DAO.SubjectDAO.SubjectDAO;
 import org.example.model.Subject;
 import org.example.model.User;
@@ -12,6 +13,7 @@ import java.util.Map;
 public class AdminService implements IAdminService {
     AdminDAO adminDao = new AdminDAO();
     SubjectDAO subjectDao = new SubjectDAO();
+    ExportToPDF exportToPDF = new ExportToPDF();
     @Override
     public void deleteStudent(String idUser) {
          adminDao.deleteStudent(idUser);
@@ -102,6 +104,11 @@ public class AdminService implements IAdminService {
     @Override
     public List<User> academicRecords() {
         return adminDao.academicRecords();
+    }
+
+    @Override
+    public boolean exportToPDF() {
+        return exportToPDF.exportToPDF();
     }
 
 }

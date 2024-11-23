@@ -45,4 +45,6 @@ public interface IAdminService {
     boolean checkID(String idUser);
     List<User> academicRecords();
 
+    boolean exportToPDF();
+
 }

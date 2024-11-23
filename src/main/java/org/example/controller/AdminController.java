@@ -498,5 +498,15 @@ public class AdminController {
         }
     }
 
+    public void exportToPDF(){
+        if (adminService.exportToPDF()){
+            System.out.println("In bảng điểm thành công!");
+            System.out.println("");
+        } else {
+            System.out.println("In bảng điểm thất bại! Vui lòng kiểm tra lại!");
+            System.out.println("");
+        }
+    }
+
 }
 

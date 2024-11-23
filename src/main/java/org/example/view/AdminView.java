@@ -22,6 +22,7 @@ public class AdminView {
             System.out.println("7. Hiện thị danh sách sinh viên chưa có mã sinh viên.");
             System.out.println("8. Cập nhập mã sinh viên.");
             System.out.println("9. Hiện thị danh sách học phần");
+            System.out.println("10. Xuất bảng điểm ra file PDF");
             System.out.println("0. Thoát");
             System.out.print("Lựa chọn của bạn: ");
             String choice = sc.nextLine();
@@ -58,7 +59,9 @@ public class AdminView {
 
                 case "9":
                     adminController.getAllSubjects();
-
+                    break;
+                case "10":
+                    adminController.exportToPDF();
                     break;
                 case "0":
                     UserView userView = new UserView();
